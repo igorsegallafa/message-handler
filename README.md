@@ -42,6 +42,21 @@ messageHandler.HandleMessage( 3, nullptr );
 messageHandler.HandleMessage( 4, nullptr );
 ```
 
+### Message Handlers ###
+Every handler used for some message (validation and processing), must be boolean function. When message is being handled, and at some step this has failed, everything else will be discarded. Example of validation handler:
+```c++
+bool GlobalValidation1( Connection* sender )
+{
+    if( sender )
+    {
+        std::cout << "Validating Message Global 1" << std::endl;
+        return true;
+    }
+
+    return false;
+}
+```
+
 ## Observations
 Is important that you adapt the library code for your networking structure. Code files used here is just an example, and a guide for you know what to do.
 
